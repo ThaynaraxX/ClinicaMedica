@@ -1,5 +1,6 @@
 const users = {
     'medico': { password: 'medico123', role: 'medico' },
+    'Rh': { password: 'rh123', role: 'Rh' },
     'atendente': { password: 'atendente123', role: 'atendente' }
 };
 
@@ -13,7 +14,9 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     if (users[username] && users[username].password === password) {
         if (users[username].role === 'medico') {
             window.location.href = 'Medico.html';
-        } else {
+        } else if (users[username].role === 'Rh') {
+            window.location.href = 'ClinicaMedica\GerenciamentoFuncionarios.html';  // Página para RH
+        } else if (users[username].role === 'atendente') {
             window.location.href = 'Atendente.html';
         }
     } else {
@@ -29,7 +32,16 @@ document.getElementById('submitNewAccount').addEventListener('click', function()
     const newPassword = document.getElementById('newPassword').value;
     const alertBox = document.getElementById('createAlert');
     const passwordRequirements = document.getElementById('passwordRequirements');
-    const role = username.includes('.atendente') ? 'atendente' : username.includes('.medico') ? 'medico' : null;
+    
+    // Determinar o papel (role) com base no e-mail
+    let role;
+    if (username.includes('.atendente')) {
+        role = 'atendente';
+    } else if (username.includes('.medico')) {
+        role = 'medico';
+    } else if (username.includes('.rh')) {  // Verificação do papel Rh
+        role = 'Rh';
+    }
 
     // Limpar alerta anterior
     alertBox.style.display = 'none';
@@ -47,7 +59,7 @@ document.getElementById('submitNewAccount').addEventListener('click', function()
 
     if (role) {
         // Validar a senha padrão
-        const expectedPassword = role === 'medico' ? 'medico123' : 'atendente123';
+        const expectedPassword = role === 'medico' ? 'medico123' : role === 'atendente' ? 'atendente123' : 'rh123';
         if (defaultPassword === expectedPassword) {
             if (isValidPassword(newPassword)) {
                 users[username] = { password: newPassword, role: role };
@@ -76,7 +88,7 @@ document.getElementById('submitNewAccount').addEventListener('click', function()
             alertBox.style.display = 'block';
         }
     } else {
-        alertBox.textContent = 'E-mail inválido. Use .atendente ou .medico no final do seu e-mail.';
+        alertBox.textContent = 'E-mail inválido. Use .atendente, .medico ou .rh no final do seu e-mail.';
         alertBox.className = 'alert alert-danger';
         alertBox.style.display = 'block';
     }
