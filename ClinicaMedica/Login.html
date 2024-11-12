@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Clínica Médica</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Login.css">
+</head>
+<body>
+    <div class="login-container">
+        <h3 class="text-center">Login</h3>
+        <form id="loginForm">
+            <div class="mb-3">
+                <label for="username" class="form-label">Usuário</label>
+                <input type="text" class="form-control" id="username" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Senha</label>
+                <div class="input-group">
+                    <input type="password" class="form-control" id="password" required>
+                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">Ver</button>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Entrar</button>
+            <div id="loginAlert" class="alert mt-3" style="display: none;"></div>
+        </form>
+        <button id="createAccount" class="btn btn-secondary w-100 mt-3" data-bs-toggle="modal" data-bs-target="#createAccountModal">Criar Conta</button>
+    </div>
+
+    
+    <div class="modal fade" id="createAccountModal" tabindex="-1" aria-labelledby="createAccountModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createAccountModalLabel">Criar Conta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="newUsername" class="form-label">E-mail</label>
+                        <input type="text" class="form-control" id="newUsername" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="defaultPassword" class="form-label">Senha Padrão</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control" id="defaultPassword" required>
+                            <button class="btn btn-outline-secondary" type="button" id="toggleDefaultPassword">Ver</button>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="newPassword" class="form-label">Defina uma nova senha</label>
+                        <input type="password" class="form-control" id="newPassword" required>
+                        <small id="passwordRequirements" class="form-text text-muted" style="display: none;">
+                            A senha deve conter pelo menos 10 caracteres, uma letra maiúscula, 3 números e 2 caracteres especiais (ex: @, !, #, $, %, &, *).
+                        </small>
+                    </div>
+                    <div id="createAlert" class="alert" style="display: none;"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="submitNewAccount">Criar Conta</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
