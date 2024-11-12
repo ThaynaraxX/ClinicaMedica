@@ -1,0 +1,97 @@
+body {
+    background-color: #d7d1d1; 
+    font-family: Arial, sans-serif; 
+}
+
+
+.btn-success{
+    background-color: #3195ff9b;
+}
+
+.btn-success:hover{
+    background-color: #3503fffd;
+}
+
+.card{
+    background-color: #d7d1d1;
+}
+
+
+.header-blue {
+    background-color: #3195ff9b; /* Cor azul do cabeçalho */
+    padding: 10px 0; /* Reduzido para maximizar o espaço */
+}
+
+.container {
+    max-width: 1200px; /* Limita a largura máxima do container */
+    margin: 0 auto; /* Centraliza o container */
+}
+
+.nav {
+    display: flex; /* Usa flexbox para alinhar horizontalmente */
+    justify-content: flex-end; /* Alinha os itens à direita */
+    flex-wrap: nowrap; /* Impede que os links quebrem para a linha de baixo */
+}
+
+.nav-link {
+    color: white; /* Cor do texto na navbar */
+    margin: 0 10px; /* Espaçamento entre os links */
+    text-decoration: none;
+    position: relative; /* Para o efeito de hover */
+}
+
+.nav-link:hover {
+    color: rgb(255, 255, 255); /* Cor do texto ao passar o mouse */
+}
+
+.nav-link:hover::after {
+    content: ''; /* Cria um pseudo-elemento */
+    display: block;
+    width: 100%;
+    height: 2px; /* Altura da linha */
+    background-color: rgb(26, 44, 167); /* Cor da linha ao passar o mouse */
+    position: absolute;
+    bottom: -5px; /* Posiciona abaixo do texto */
+    left: 0;
+    right: 0;
+}
+
+.hospital-logo {
+    max-width: 100%; /* Ajusta a largura da logo */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+.img-fundo{
+    text-align: center;
+    height: 100vh;
+    margin-top: 200px;
+    padding-top: 200px;
+    position: relative;
+    justify-content: center;
+    align-items: flex-start;
+    display: flex;
+    
+}
+
+.suporte{
+    text-align: center;
+    color: #3195ff9b;
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.atendimento{
+    text-align: center;
+    color: #3195ff9b;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* Adicionei esta classe para evitar quebra de linha na coluna */
+.text-end {
+    white-space: nowrap; /* Impede a quebra de linha */
+}
+
+.footer{
+    background-color: #3195ff9b;
+}

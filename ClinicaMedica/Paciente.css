@@ -1,0 +1,176 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #d7d1d1;  /* Fundo claro e suave */
+    margin: 0;
+    padding: 0;
+}
+
+/* Container principal que centraliza o conteúdo */
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;  /* Fundo branco para destacar o conteúdo */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 6px rgba(11, 11, 11, 0.375); /* Sombra sutil para dar destaque */
+}
+
+/* ======= Estilos específicos para o formulário de cadastro (index.html) ======= */
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(9, 125, 226, 0.159);  /* Sombra leve para o box */
+}
+
+/* Títulos de formulário */
+h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center; /* Centraliza o título */
+}
+
+/* Estilo dos campos de input */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="email"],
+select.form-select {
+    width: 100%; /* Faz com que os campos ocupem toda a largura disponível */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px; /* Bordas arredondadas */
+    background-color: #f9f9f9; /* Fundo suave nos inputs */
+    font-size: 1rem;
+}
+
+/* Foco nos campos de input */
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+input[type="email"]:focus,
+select.form-select:focus {
+    border-color: #007bff;  /* Cor azul para indicar foco */
+    outline: none;
+    background-color: #fff; /* Cor de fundo branca quando o campo está em foco */
+}
+
+/* Botão de ação (Salvar) */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;  /* Azul para o botão */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;  
+}
+
+
+/* Efeito de hover no botão de salvar */
+button[type="submit"]:hover {
+    background-color: #0056b3;  /* Azul mais escuro ao passar o mouse */
+}
+
+/* Mensagens de erro e sucesso */
+.alert {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.alert-success {
+    background-color: #28a745; /* Verde */
+    color: white;
+}
+
+.alert-danger {
+    background-color: #dc3545; /* Vermelho */
+    color: white;
+}
+
+#cpf-alert,
+#email-alert {
+    display: block;
+    color: #dc3545; /* Vermelho para alertar sobre CPF ou email duplicado */
+    font-size: 0.9rem;
+}
+
+/* ======= Estilos para o botão "Sair" no canto direito ======= */
+
+/* Estilo do botão "Sair" */
+a.btn-secondary {
+    position: absolute; /* Posicionamento absoluto em relação ao seu contêiner pai */
+    top: 20px; /* Distância do topo (ajuste conforme necessário) */
+    right: 20px; /* Distância da borda direita (ajuste conforme necessário) */
+    padding: 8px 16px; /* Tamanho reduzido */
+    background-color: #ff0000; /* Cor cinza */
+    color: white;
+    border-radius: 5px;
+    font-size: 1rem; /* Tamanho de fonte menor */
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    
+}
+
+/* Efeito de hover no botão "Sair" */
+a.btn-secondary:hover {
+    background-color: #e72626; /* Cor mais escura ao passar o mouse */
+    transform: scale(1.05); /* Efeito de aumentar o botão um pouco */
+}
+
+/* ======= Estilos para o contêiner pai (deve ter 'position: relative') ======= */
+.container {
+    position: relative; /* Importante: o contêiner precisa ser relativo para que o botão absoluto se posicione corretamente dentro dele */
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgb(0, 4, 255);
+}
+
+
+a.btn-link {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 5px;
+    background-color: #488cd5;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+a.btn-link:hover {
+    background-color: #0057b35c;
+}
+
+
+/* Para telas pequenas (responsividade) */
+@media (max-width: 768px) {
+    a.btn-secondary {
+        font-size: 1.1rem;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    button[type="submit"] {
+        font-size: 1.1rem;
+    }
+}

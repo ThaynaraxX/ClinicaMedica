@@ -1,148 +1,133 @@
-document.getElementById('employeeForm').addEventListener('submit', addEmployee);
+let employees = []; // Armazenar funcionários
 
-const employeeList = document.getElementById('employeeList');
-const messageBox = document.getElementById('messageBox');
+document.getElementById('employeeForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+    const employeeData = Object.fromEntries(formData.entries());
 
-// Carregar funcionários ao iniciar a página
-document.addEventListener('DOMContentLoaded', () => {
-    const employees = JSON.parse(localStorage.getItem('employees')) || [];
-    employees.forEach((employee, index) => {
-        displayEmployee(employee, index + 1);
-    });
+    if (employeeData.id) {
+        updateEmployee(employeeData); // Atualiza um funcionário
+    } else {
+        addEmployee(employeeData); // Adiciona um novo funcionário
+    }
 });
 
-function addEmployee(event) {
-    event.preventDefault(); // Evitar o envio do formulário
-
-    const form = event.target;
-    const employee = {
-        nome: form.nome.value,
-        idade: form.idade.value,
-        sexo: form.sexo.value,
-        cpf: form.cpf.value,
-        rua: form.rua.value,
-        numero: form.numero.value,
-        complemento: form.complemento.value,
-        bairro: form.bairro.value,
-        cidade: form.cidade.value,
-        estado: form.estado.value,
-        contato: form.contato.value,
-        email: form.email.value,
-        dataNascimento: form.dataNascimento.value
-    };
-
-    // Carregar os dados existentes
-    const employees = JSON.parse(localStorage.getItem('employees')) || [];
-
-    // Verificar duplicidade de CPF e e-mail
-    const cpfExists = employees.some(emp => emp.cpf === employee.cpf);
-    const emailExists = employees.some(emp => emp.email === employee.email);
-
-    if (cpfExists) {
-        showMessage('Erro: CPF já cadastrado!', 'danger');
+function addEmployee(employeeData) {
+    // Verifica se o CRM já está cadastrado
+    const existingEmployee = employees.find(emp => emp.crm === employeeData.crm);
+    if (existingEmployee) {
+        showAlert('CRM já cadastrado. Por favor, insira um CRM único.', 'danger');
         return;
     }
 
-    if (emailExists) {
-        showMessage('Erro: E-mail já cadastrado!', 'danger');
-        return;
-    }
-
-    // Adicionar o novo funcionário
-    employees.push(employee);
-
-    // Salvar novamente no localStorage
-    localStorage.setItem('employees', JSON.stringify(employees));
-
-    // Exibir o novo funcionário na tabela
-    displayEmployee(employee, employees.length);
-
-    // Limpar o formulário após adicionar
-    form.reset();
-
-    // Mostrar mensagem de sucesso
-    showMessage('Funcionário adicionado com sucesso!', 'success');
+    // Adiciona o funcionário na lista
+    employeeData.id = Date.now(); // Usando o timestamp como id
+    employees.push(employeeData);
+    showAlert('Funcionário adicionado com sucesso!', 'success');
+    clearForm();
+    renderEmployees();
 }
 
-function displayEmployee(employee, id) {
-    const row = document.createElement('tr');
-    row.innerHTML = 
-        `<td>${id}</td>
-        <td>${employee.nome}</td>
-        <td>${employee.idade}</td>
-        <td>${employee.sexo}</td>
-        <td>${employee.cpf}</td>
-        <td>${employee.rua}</td>
-        <td>${employee.numero}</td>
-        <td>${employee.complemento}</td>
-        <td>${employee.bairro}</td>
-        <td>${employee.cidade}</td>
-        <td>${employee.estado}</td>
-        <td>${employee.contato}</td>
-        <td>${employee.email}</td>
-        <td>${employee.dataNascimento}</td>
-        <td class="actions-column">
-            <button class="btn btn-warning btn-sm" onclick="editEmployee(${id})">Editar</button>
-            <button class="btn btn-danger btn-sm" onclick="deleteEmployee(${id})">Excluir</button>
-        </td>`;
-    employeeList.appendChild(row);
+function updateEmployee(employeeData) {
+    // Atualiza os dados do funcionário
+    const index = employees.findIndex(emp => emp.id === employeeData.id);
+    if (index !== -1) {
+        employees[index] = employeeData;
+        showAlert('Funcionário atualizado com sucesso!', 'success');
+        clearForm();
+        renderEmployees();
+    }
+}
+
+function deleteEmployee(id) {
+    // Exclui um funcionário
+    employees = employees.filter(emp => emp.id !== id);
+    showAlert('Funcionário excluído com sucesso!', 'success');
+    renderEmployees();
 }
 
 function editEmployee(id) {
-    const employees = JSON.parse(localStorage.getItem('employees')) || [];
-    const employee = employees[id - 1];
+    // Preenche o formulário com os dados do funcionário para edição
+    const employee = employees.find(emp => emp.id === id);
+    if (employee) {
+        document.getElementById('nome').value = employee.nome;
+        document.getElementById('idade').value = employee.idade;
+        document.getElementById('sexo').value = employee.sexo;
+        document.getElementById('cpf').value = employee.cpf;
+        document.getElementById('rua').value = employee.rua;
+        document.getElementById('numero').value = employee.numero;
+        document.getElementById('complemento').value = employee.complemento;
+        document.getElementById('bairro').value = employee.bairro;
+        document.getElementById('cidade').value = employee.cidade;
+        document.getElementById('estado').value = employee.estado;
+        document.getElementById('contato').value = employee.contato;
+        document.getElementById('email').value = employee.email;
+        document.getElementById('dataNascimento').value = employee.dataNascimento;
+        document.getElementById('crm').value = employee.crm || '';
+        document.getElementById('especialidade').value = employee.especialidade || '';
+        document.getElementById('tipoFuncionario').value = employee.crm ? 'medico' : 'atendente';
+        document.getElementById('submitBtn').textContent = 'Atualizar Funcionário';
 
-    const form = document.getElementById('employeeForm');
-    form.nome.value = employee.nome;
-    form.idade.value = employee.idade;
-    form.sexo.value = employee.sexo;
-    form.cpf.value = employee.cpf;
-    form.rua.value = employee.rua;
-    form.numero.value = employee.numero;
-    form.complemento.value = employee.complemento;
-    form.bairro.value = employee.bairro;
-    form.cidade.value = employee.cidade;
-    form.estado.value = employee.estado;
-    form.contato.value = employee.contato;
-    form.email.value = employee.email;
-    form.dataNascimento.value = employee.dataNascimento;
-
-    // Remover o funcionário antigo
-    deleteEmployee(id, true);
-}
-
-function deleteEmployee(id, fromEdit = false) {
-    const employees = JSON.parse(localStorage.getItem('employees')) || [];
-
-    // Excluir funcionário
-    employees.splice(id - 1, 1);
-    localStorage.setItem('employees', JSON.stringify(employees));
-
-    // Atualizar a tabela
-    updateEmployeeList();
-
-    // Mostrar mensagem de sucesso ou erro
-    if (!fromEdit) {
-        showMessage('Funcionário excluído com sucesso!', 'danger');
+        // Armazena o id para saber que estamos editando
+        document.getElementById('employeeForm').setAttribute('data-edit-id', employee.id);
     }
 }
 
-function updateEmployeeList() {
-    const employees = JSON.parse(localStorage.getItem('employees')) || [];
-    employeeList.innerHTML = '';
-    employees.forEach((employee, index) => {
-        displayEmployee(employee, index + 1);
+function renderEmployees() {
+    const tbody = document.getElementById('employeeList').querySelector('tbody');
+    tbody.innerHTML = ''; // Limpar a tabela antes de repopular
+
+    employees.forEach(employee => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${employee.id}</td>
+            <td>${employee.nome}</td>
+            <td>${employee.idade}</td>
+            <td>${employee.sexo}</td>
+            <td>${employee.cpf}</td>
+            <td>${employee.rua}</td>
+            <td>${employee.numero}</td>
+            <td>${employee.complemento}</td>
+            <td>${employee.bairro}</td>
+            <td>${employee.cidade}</td>
+            <td>${employee.estado}</td>
+            <td>${employee.contato}</td>
+            <td>${employee.email}</td>
+            <td>${employee.dataNascimento}</td>
+            <td>${employee.crm || ''}</td>
+            <td>${employee.especialidade || ''}</td>
+            <td>
+                <button class="btn btn-warning" onclick="editEmployee(${employee.id})">Editar</button>
+                <button class="btn btn-danger" onclick="deleteEmployee(${employee.id})">Excluir</button>
+            </td>
+        `;
+        tbody.appendChild(row);
     });
 }
 
-function showMessage(message, type) {
-    messageBox.classList.remove('d-none', 'alert-success', 'alert-danger');
-    messageBox.classList.add(`alert-${type}`);
-    messageBox.textContent = message;
-    
-    setTimeout(() => {
-        messageBox.classList.add('d-none');
-    }, 3000);
+function clearForm() {
+    document.getElementById('employeeForm').reset();
+    document.getElementById('submitBtn').textContent = 'Adicionar Funcionário';
+    document.getElementById('employeeForm').removeAttribute('data-edit-id');
+}
+
+function showAlert(message, type) {
+    const alertBox = document.getElementById('messageBox');
+    alertBox.textContent = message;
+    alertBox.className = `alert alert-${type}`;
+    alertBox.classList.remove('d-none');
+    setTimeout(() => alertBox.classList.add('d-none'), 3000); // Esconde após 3 segundos
+}
+
+function toggleFields() {
+    const tipoFuncionario = document.getElementById('tipoFuncionario').value;
+    const medicoFields = document.getElementById('medicoFields');
+    if (tipoFuncionario === 'medico') {
+        medicoFields.classList.remove('d-none');
+    } else {
+        medicoFields.classList.add('d-none');
+    }
 }
 
 function logout() {
@@ -150,5 +135,6 @@ function logout() {
     localStorage.clear();
     
     // Redirecionar para a página de login
-    window.location.href = 'Login.html'; // Redireciona para o login
+    window.location.href = 'Administrativo.html'; // Redireciona para o login
 }
+

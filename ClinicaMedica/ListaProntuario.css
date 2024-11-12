@@ -1,0 +1,148 @@
+/* ======= Estilos Gerais ======= */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* ======= Estilos para o Container Principal ======= */
+.container {
+    margin-top: 50px;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+/* ======= Estilos para o Título ======= */
+h1 {
+    font-size: 2.25rem;
+    color: #2c3e50;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* ======= Estilos para a Tabela ======= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    font-size: 1.1rem;
+}
+
+th {
+    background-color: #f9fafb;
+    color: #2c3e50;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+td {
+    background-color: #fdfdfd;
+    color: #7f8c8d;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+/* ======= Efeito Hover nas Linhas da Tabela ======= */
+tr:hover {
+    background-color: #f1f3f4;
+}
+
+/* ======= Estilos para o Botão de Cadastro ======= */
+a.btn-primary {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+a.btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* ======= Caixa de Alerta ======= */
+.alert {
+    margin-top: 20px;
+    font-size: 1rem;
+    display: none; /* Inicialmente escondido */
+}
+
+.alert-warning {
+    background-color: #f39c12;
+    color: white;
+}
+
+/* ======= Responsividade para a Tabela ======= */
+@media (max-width: 1024px) {
+    table {
+        font-size: 1rem;
+    }
+
+    th, td {
+        padding: 10px 12px;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    table th, table td {
+        word-wrap: break-word;
+        white-space: normal;
+    }
+
+    .col-mobile-hide {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    table {
+        font-size: 0.9rem;
+    }
+
+    th, td {
+        padding: 8px 10px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    table th, table td {
+        word-wrap: break-word;
+        white-space: normal;
+    }
+
+    .col-mobile-hide {
+        display: none;
+    }
+}

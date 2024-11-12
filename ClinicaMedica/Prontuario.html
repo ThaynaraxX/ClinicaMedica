@@ -1,11 +1,37 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prontuario</title>
+    <title>Cadastro de Prontuário</title>
+    <link rel="stylesheet" href="Prontuario.css">
 </head>
 <body>
-    
+    <div class="container">
+        <h1>Cadastro de Prontuário</h1>
+
+        
+        <form id="formProntuario">
+            <div class="form-group">
+                <label for="receituario">Receituário</label>
+                <textarea id="receituario" name="receituario" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="exames">Exames</label>
+                <textarea id="exames" name="exames" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="observacoes">Observações</label>
+                <textarea id="observacoes" name="observacoes" rows="4" required></textarea>
+            </div>
+
+            <button type="submit">Salvar</button>
+            <button type="button" id="btnSair">Sair</button>
+        </form>
+    </div>
+
+    <script src="Prontuario.js"></script>
 </body>
 </html>

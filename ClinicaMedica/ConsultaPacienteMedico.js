@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     renderConsultas();
 });
 
-// renderizar as consultas na tabela
+//  renderizar as consultas na tabela
 function renderConsultas() {
     const consultaList = document.getElementById('consultaList');
     consultaList.innerHTML = '';
@@ -77,7 +77,7 @@ function deleteConsulta(index) {
     renderConsultas();
 }
 
-//editar consulta
+//  editar consulta
 function editConsulta(index) {
     const consulta = consultas[index];
     document.getElementById('dataHorario').value = consulta.dataHorario;
@@ -88,7 +88,7 @@ function editConsulta(index) {
     deleteConsulta(index);
 }
 
-//mostrar alerta de erro ou sucesso
+// alerta de erro ou sucesso
 function showAlert(message, type) {
     const alertDiv = document.getElementById('alert');
     alertDiv.classList.remove('d-none', 'alert-success', 'alert-danger');

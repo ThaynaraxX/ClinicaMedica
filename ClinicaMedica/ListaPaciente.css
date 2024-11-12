@@ -1,0 +1,141 @@
+/* ======= Estilos para o Container da Lista de Pacientes ======= */
+.container {
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgb(42, 0, 251); /* Sombra suave */
+    max-width: 100%; /* Garante que ocupe toda a largura disponível */
+    overflow-x: auto; /* Permite rolagem horizontal se necessário */
+}
+
+/* ======= Estilos para o Corpo da Página ======= */
+body {
+    background-color: #d7d1d1;
+}
+
+/* ======= Estilos para o Título ======= */
+h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* ======= Estilos para a Tabela ======= */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Remove o espaço entre as células */
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px 15px; /* Espaçamento interno nas células */
+    text-align: left; /* Alinha o texto à esquerda */
+}
+
+th {
+    background-color: #f4f4f9; /* Cor de fundo das células de cabeçalho */
+    color: #333; /* Cor do texto do cabeçalho */
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+td {
+    background-color: #fafafa; /* Cor de fundo das células de dados */
+    color: #666; /* Cor do texto */
+    font-size: 1rem;
+    border-bottom: 1px solid #ddd; /* Linha fina entre as células */
+}
+
+/* ======= Efeito Hover nas Linhas da Tabela ======= */
+tr:hover {
+    background-color: #e9ecef; /* Fundo mais claro quando passa o mouse */
+}
+
+/* ======= Sombra nas Células ======= */
+td, th {
+    border-radius: 4px;
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.1); /* Sombra interna */
+}
+
+/* ======= Estilos para o Botão de Cadastro ======= */
+a.btn-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 20px; /* Espaço entre o botão e a tabela */
+}
+
+a.btn-primary:hover {
+    background-color: #0056b3; /* Cor mais escura ao passar o mouse */
+    transform: scale(1.05); /* Efeito de aumento do botão */
+}
+
+/* ======= Responsividade para a Tabela (Dispositivos Móveis e Médios) ======= */
+@media (max-width: 1024px) {
+    table {
+        font-size: 1rem; /* Ajuste o tamanho da fonte para dispositivos médios */
+    }
+
+    th, td {
+        padding: 10px 12px; /* Ajuste o padding nas células para telas de tamanho médio */
+    }
+
+    h1 {
+        font-size: 1.75rem; /* Ajusta o tamanho do título */
+    }
+
+    .container {
+        padding: 15px; /* Reduz o padding do container em telas menores */
+    }
+
+    /* Ajusta o layout da tabela para telas menores (evitar overflow) */
+    table th, table td {
+        word-wrap: break-word;
+        white-space: normal;
+    }
+
+    /* Esconde colunas com texto longo em telas muito pequenas */
+    .col-mobile-hide {
+        display: none;
+    }
+}
+
+/* ======= Responsividade para Dispositivos Móveis (Menores que 768px) ======= */
+@media (max-width: 768px) {
+    table {
+        font-size: 0.9rem; /* Ajuste o tamanho da fonte para dispositivos móveis */
+    }
+
+    th, td {
+        padding: 8px 10px; /* Reduz o padding nas células para telas menores */
+    }
+
+    h1 {
+        font-size: 1.5rem; /* Ajusta o tamanho do título */
+    }
+
+    /* Ajusta o layout da tabela para telas menores (evitar overflow) */
+    table th, table td {
+        word-wrap: break-word;
+        white-space: normal;
+    }
+
+    .container {
+        padding: 10px; /* Reduz o padding do container em telas muito pequenas */
+    }
+
+    /* Esconde colunas com texto longo em telas muito pequenas */
+    .col-mobile-hide {
+        display: none;
+    }
+}

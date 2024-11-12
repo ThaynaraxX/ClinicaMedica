@@ -15,7 +15,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         if (users[username].role === 'medico') {
             window.location.href = 'Medico.html';
         } else if (users[username].role === 'Rh') {
-            window.location.href = 'ClinicaMedica\GerenciamentoFuncionarios.html';  // Página para RH
+            window.location.href = 'ClinicaMedica\Administrativo.html';  
         } else if (users[username].role === 'atendente') {
             window.location.href = 'Atendente.html';
         }

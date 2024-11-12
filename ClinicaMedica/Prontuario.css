@@ -1,0 +1,161 @@
+/* Estilos principais */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #d7d1d1;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgb(5, 63, 255);
+    position: relative;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Estilos do formulário */
+input[type="text"],
+textarea,
+input[type="datetime-local"],
+select.form-select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 1rem;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos da lista de prontuários */
+.list-container {
+    margin-top: 30px;
+}
+
+.list-item {
+    background-color: #fafafa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-item button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.list-item button:hover {
+    background-color: #e72626;
+}
+
+button#btnSair {
+    background-color: #ff0000;
+    color: white;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-size: 1rem;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+button#btnSair:hover {
+    background-color: #e72626;
+}
+
+/* Tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+td {
+    background-color: #fafafa;
+    color: #666;
+    font-size: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background-color: #e9ecef;
+}
+
+a.btn-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 5px;
+    background-color: #488cd5;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+a.btn-primary:hover {
+    background-color: #0057b35c;
+}
+
+/* Alertas */
+.alert {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.alert-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.alert-danger {
+    background-color: #dc3545;
+    color: white;
+}

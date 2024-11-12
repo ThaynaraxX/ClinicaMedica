@@ -80,13 +80,6 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.mediciners{
-    text-align: center;
-    color: #3195ff9b;
-    font-size: 20px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
 /* Adicionei esta classe para evitar quebra de linha na coluna */
 .text-end {
     white-space: nowrap; /* Impede a quebra de linha */
